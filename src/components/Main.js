@@ -1,6 +1,8 @@
 function Main() {
 	return (
-		<main></main>
+		<main>
+			My WebApp
+		</main>
 	);
 }
 

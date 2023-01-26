@@ -1,3 +1,5 @@
+import { Flex, Spacer, Link } from '@chakra-ui/react'
+// import { ExternalLinkIcon } from '@chakra-ui/icons'
 import Logo from './Logo'
 // import logo from '../Logo.svg';
 
@@ -5,16 +7,33 @@ import Logo from './Logo'
 function Nav() {
 	return (
 		<nav>
-        		{/* <img src={logo} alt="logo" /> */}
-            <Logo />
-            <ul>
-                <li><a href="{}">Home</a></li>
-                <li><a href="{}">About</a></li>
-                <li><a href="{}">Menu</a></li>
-                <li><a href="{}">Reservations</a></li>
-                <li><a href="{}">Order Online</a></li>
-                <li><a href="{}">Login</a></li>
-            </ul>
+            <Flex
+                w="1120px"
+                    marginLeft="auto"
+                    marginRight="auto">
+                <Flex
+                    h="20"
+                    alignItems="center">
+                    <Logo />
+                </Flex>
+                <Spacer />
+                <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                    gap="10"
+                    fontWeight="extrabold"
+                    fontFamily={"Karla"}
+                    textTransform="uppercase"
+                    // className="uppercase"
+                >
+                    <Link>Home</Link>
+                    <Link>About</Link>
+                    <Link>Menu</Link>
+                    <Link>Reservations</Link>
+                    <Link>Order Online</Link>
+                    <Link>Login</Link>
+                </Flex>
+            </Flex>
         </nav>
 	);
 }
