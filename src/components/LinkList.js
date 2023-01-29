@@ -1,15 +1,16 @@
+import { Link as ReachLink } from 'react-router-dom'
+import { Flex, Link, Text } from '@chakra-ui/react'
+
 function LinkList({navigation}) {
 	return (
-		<div>
-			<h3>{navigation.title}</h3>
-			<ul>
+		<Flex direction={'column'}>
+			<Text fontWeight={'bold'} color="primary" marginBottom={1}>{navigation.title}</Text>
 			{
 				navigation.lists.map((list) => (
-					<li key={list.name}>{list.name}</li>
+					<Link as={ReachLink} to={list.link} key={list.name}>{list.name}</Link>
 				))
 			}
-			</ul>
-		</div>
+		</Flex>
 	)
 }
 

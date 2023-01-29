@@ -1,6 +1,6 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
 import pixa from '../images/Mario and Adrian A.jpg';
-import pixb from '../images/Mario and Adrian b.jpg';
+import pixb from '../images/restaurant chef B.jpg';
 
 function Chicago() {
 	return (
@@ -29,7 +29,6 @@ Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit 
 					boxSize='450px'
 					border="1px solid white"
 					marginTop="150px"
-					marginBottom={"-80px"}
 					marginRight={"-250px"}
 					zIndex={10}
 					objectFit='cover'/>

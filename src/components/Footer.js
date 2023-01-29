@@ -1,4 +1,5 @@
-import LogoV from './Logo'
+import Logo from '../images/LogoV.png'
+import { Flex, Image } from "@chakra-ui/react";
 import LinkList from './LinkList'
 
 const navigations = [
@@ -7,7 +8,7 @@ const navigations = [
 		lists: [
 			{
 				name: "Home",
-				link: ""
+				link: "/"
 			},
 			{
 				name: "About",
@@ -19,7 +20,7 @@ const navigations = [
 			},
 			{
 				name: "Reservations",
-				link: ""
+				link: "/booking"
 			},
 			{
 				name: "Order Online",
@@ -70,17 +71,33 @@ const navigations = [
 function Footer() {
 	return (
 		<footer>
-			{/* Logo-vertical */}
-			<LogoV></LogoV>
+			<Flex
+				bg="blackAlpha.100"
+				paddingY={20}
+			>
+				<Flex
+					minH={10}
+					w="1120px"
+					marginLeft="auto"
+					marginRight="auto"
+					gap={20}
+					paddingLeft={10}
+					justifyContent='space-between'
+				>
+					<Image src={Logo} w='10%' />
+					<Flex gap={32}>
+						{
+							navigations.map((navigation) => (
+								<LinkList
+									key={navigation.title}
+									navigation={navigation}
+								/>
+							))
+						}
+					</Flex>
+				</Flex>
+			</Flex>
 
-			{
-				navigations.map((navigation) => (
-					<LinkList
-						key={navigation.title}
-						navigation={navigation}
-					/>
-				))
-			}
 		</footer>
 	);
 }
