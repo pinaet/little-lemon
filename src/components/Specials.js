@@ -29,7 +29,9 @@ function Specials() {
 			w="1120px"
 			direction={"column"}
 			marginLeft="auto"
-			marginRight="auto">
+			marginRight="auto"
+			paddingBottom={10}
+			>
 			<Flex
 				h="20"
 				w="100%"
