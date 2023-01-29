@@ -1,3 +1,4 @@
+import { Link as ReachLink } from 'react-router-dom'
 import { Flex, Spacer, Link } from '@chakra-ui/react'
 // import { ExternalLinkIcon } from '@chakra-ui/icons'
 import Logo from './Logo'
@@ -26,10 +27,10 @@ function Nav() {
                     textTransform="uppercase"
                     // className="uppercase"
                 >
-                    <Link>Home</Link>
+                    <Link as={ReachLink} to="/">Home</Link>
                     <Link>About</Link>
                     <Link>Menu</Link>
-                    <Link>Reservations</Link>
+                    <Link as={ReachLink} to="/booking">Reservations</Link>
                     <Link>Order Online</Link>
                     <Link>Login</Link>
                 </Flex>

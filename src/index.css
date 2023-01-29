@@ -13,49 +13,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.me-grid{
-		display: grid;
-		height: 200px;
-		grid-template-areas: "nav"
-							"head"
-							"main"
-							"footer";
-		grid-template-rows: 1fr 1fr 1fr 1fr;
-		grid-template-columns: 1fr;
-}
-
-header{
-	grid-area: head;
-	background-color: white;
-}
-
-nav {
-	grid-area: nav;
-	background-color: white;
-}
-
-main {
-	grid-area: main;
-	background-color: lightyellow;
-}
-
-footer {
-	grid-area: footer;
-	background-color: firebrick;
-}
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
-}
-
-h1{
-	font-size: 64pt;
-	font-weight: 700; /* 700=bold */
-	font-family: 'Markazi Text', serif;
-}
-h2{
-	font-size: 40pt;
-	font-weight: 400; /* 400=regular, 500=medium */
-	font-family: 'Markazi Text', serif;
 }
