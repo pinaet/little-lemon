@@ -8,17 +8,17 @@ function Review(props){
                 <Flex spacing='4'>
                     <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                         <Stack direction='row'>
-                            <Avatar src='https://bit.ly/broken-link' />
+                            <Avatar src={props.review.avatar} />
                         </Stack>
                         <Box>
-                            <Heading size='md'>Name</Heading>
+                            <Heading size='md'>{props.review.name}</Heading>
                         </Box>
                     </Flex>
                 </Flex>
             </CardHeader>
             <CardBody>
                 <Text>
-                    Review Text
+                    {props.review.review}
                 </Text>
             </CardBody>
         </Card>
