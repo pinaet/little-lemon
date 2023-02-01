@@ -1,11 +1,11 @@
-import BookingForm from "./BookingForm";
+import Main from "./Main";
 import Nav from "./Nav";
 
 function BookingPage() {
 	return (
 		<>
 			<Nav/>
-			<BookingForm/>
+			<Main/>
 		</>
 	)
 }
