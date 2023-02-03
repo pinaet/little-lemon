@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Main from "./Main";
 import Nav from "./Nav";
 
@@ -6,6 +7,7 @@ function BookingPage() {
 		<>
 			<Nav/>
 			<Main/>
+			<Footer/>
 		</>
 	)
 }
