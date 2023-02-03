@@ -1,10 +1,11 @@
 import { useReducer } from "react";
 import BookingForm from "./BookingForm";
-import { updateTimes, availableTimes } from "../functions/bookingTimes"
+import { updateTimes, initializeTimes } from "../functions/bookingTimes"
 
 
 function Main() {
-	const [state, dispatch] = useReducer( updateTimes, availableTimes )
+
+	const [state, dispatch] = useReducer( updateTimes, initializeTimes() )
 
 	return (
 		<main>

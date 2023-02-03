@@ -1,54 +1,20 @@
-export const availableTimes  = [
-    {
-        id: 1,
-        status: false,
-        time: '17:00'
-    },
-    {
-        id: 2,
-        status: false,
-        time: '18:00'
-    },
-    {
-        id: 3,
-        status: false,
-        time: '19:00'
-    },
-    {
-        id: 4,
-        status: false,
-        time: '20:00'
-    },
-    {
-        id: 5,
-        status: false,
-        time: '21:00'
-    },
-    {
-        id: 6,
-        status: false,
-        time: '22:00'
-    }
-]
+import { fetchAPI } from "../functions/api"
 
-export function initializeTimes(times = availableTimes){
-    times.map( time => {
-        time.status = false
-        return time
-    })
-    return times
+let availableTimes  = fetchAPI(new Date())//= ['17:00','18:00','19:00','20:00','21:00','22:00']
+
+export function initializeTimes(date){
+    if(!date){
+        date = new Date()
+    }
+    let local_date = new Date(date)
+    availableTimes = fetchAPI(local_date)
+    return availableTimes
 }
 
-export const updateTimes = (times = availableTimes, action) => {
-
-    initializeTimes(times)
+export const updateTimes = (times, action) => {
 
     //select time
-    times.map( time => {
-        if(time.time===action.time)
-            time.status = true
-        return time
-    })
+    times = initializeTimes(action.date)
 
 	return times
 }

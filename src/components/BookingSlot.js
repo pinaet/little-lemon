@@ -1,7 +1,7 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 
 function handleStatusChange(status,dispatch) {
-    console.log('clicked',status)
+    // console.log('clicked',status)
     // console.log('dispatch',dispatch)
     dispatch({time:status})
 }

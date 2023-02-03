@@ -1,12 +1,11 @@
 import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, Select, Spinner, VStack } from "@chakra-ui/react";
-import React, {useEffect} from "react";
+import React from "react";
 import { useFormik } from "formik";
 import useSubmit from "../hooks/useSubmit";
 import * as Yup from 'yup';
-import BookingSlot from "./BookingSlot";
 
 function BookingForm(props) {
-	const {isLoading, response, submit} = useSubmit();
+	const {isLoading, submit} = useSubmit() //response, 
 
 	const formik = useFormik({
 		initialValues: {
@@ -32,10 +31,6 @@ function BookingForm(props) {
 		}),
 	});
 
-	useEffect(() => {
-		console.log( formik.values.time)
-	} )
-
 	return (
 		<Flex marginX="auto" w="1000px">
 			<VStack w="1024px" px={32} paddingBottom={32} alignItems="flex-start">
@@ -51,43 +46,32 @@ function BookingForm(props) {
 							id="date"
 							name="date"
 							type="date"
-							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
-							value={formik.values.firstName}
+							value={formik.values.date}
+							onChange={(e) => {
+								// dispatch to reducer
+								props.availableTimes.dispatch({date: formik.values.date})
+
+								// send input data to formik
+								formik.handleChange(e);
+							 }}
 							/>
-							<FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
+							<FormErrorMessage>{formik.errors.date}</FormErrorMessage>
 						</FormControl>
 						<FormControl >
 							<FormLabel fontWeight="bold" htmlFor="time">Time</FormLabel>
-							<Flex justifyContent={"center"}>
-							{
-								props.availableTimes.state.map( time=>{
-									return (
-										<BookingSlot key={time.id} time={time} dispatch={props.availableTimes.dispatch} />
-									)
-								})
-							}
-							</Flex>
 							<Select
 								id="time"
 								name="time"
-								// onChange={e=>props.availableTimes.dispatch(e.target.value)}
-								// onChange={formik.handleChange}
+								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								value={formik.values.time}
-								onChange={(e) => {
-									// dispatch to reducer
-									props.availableTimes.dispatch({time: e.target.value})
-
-									// send input data to formik
-									formik.handleChange(e);
-								 }}
 								>
 								<option style={{color:"purple"}} value="">Select Time</option>
 								{
 									props.availableTimes.state.map(time=>{
 										return (
-											<option key={time.id} value={time.time}>{time.time}</option>
+											<option key={time} value={time}>{time}</option>
 										)
 									})
 								}
