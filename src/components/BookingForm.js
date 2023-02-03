@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 import { useFormik } from "formik";
 import useSubmit from "../hooks/useSubmit";
 import * as Yup from 'yup';
+import BookingSlot from "./BookingSlot";
 
 function BookingForm(props) {
 	const {isLoading, response, submit} = useSubmit();
@@ -58,6 +59,15 @@ function BookingForm(props) {
 						</FormControl>
 						<FormControl >
 							<FormLabel fontWeight="bold" htmlFor="time">Time</FormLabel>
+							<Flex justifyContent={"center"}>
+							{
+								props.availableTimes.state.map( time=>{
+									return (
+										<BookingSlot key={time.id} time={time} dispatch={props.availableTimes.dispatch} />
+									)
+								})
+							}
+							</Flex>
 							<Select
 								id="time"
 								name="time"
@@ -67,17 +77,17 @@ function BookingForm(props) {
 								value={formik.values.time}
 								onChange={(e) => {
 									// dispatch to reducer
-									props.availableTimes.dispatch({type: e.target.value})
+									props.availableTimes.dispatch({time: e.target.value})
 
 									// send input data to formik
 									formik.handleChange(e);
 								 }}
 								>
-								<option style={{color:"purple"}} value="">{!formik.values.time ? 'Select Time' : formik.values.time }</option>
+								<option style={{color:"purple"}} value="">Select Time</option>
 								{
 									props.availableTimes.state.map(time=>{
 										return (
-											<option key={time} value={time}>{time}</option>
+											<option key={time.id} value={time.time}>{time.time}</option>
 										)
 									})
 								}
