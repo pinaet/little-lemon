@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function BookingForm(props) {
 	const [isLoading, setIsLoading] = useState(false) //response, 
-	const navigate = useNavigate()
+	const navigate = useNavigate('/')
 
 	const reserveTable = (values)=>{
 		setIsLoading(true)
