@@ -1,12 +1,23 @@
-import { Flex, Image, Text } from '@chakra-ui/react'
+import { Button, Flex, Image, Text } from '@chakra-ui/react'
 import food from '../images/restauranfood.jpg';
-import LLButton from './inputs/LLButton';
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
 // 495E57
 function CallToAction(props) {
 
 	// function clickButton(){
 	// 	props.setWord('test')
 	// }
+	const [flag, setFlag] = useState(false)
+	const navigate = useNavigate()
+
+	useEffect(()=>{
+		console.log(flag)
+		if(flag){
+			console.log('tst')
+			navigate('/booking')
+		}
+	})
 
 	return (
 		<header>
@@ -29,7 +40,9 @@ function CallToAction(props) {
 							<Text fontFamily={"Markazi Text"} fontSize="40px" color={"white"}>Chicago</Text>
 							<Text fontFamily={"Karla"} fontSize="18px" color={"white"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
 						</Flex>
-						<LLButton msg="Reserve a Table" />
+						<Button colorScheme='yellow' size='lg' w={'fit-content'} rounded="18px" fontFamily={"Karla"} fontSize="18px" onClick={()=>setFlag(true)}>
+							Reserve a Table
+						</Button>
 					</Flex>
 					<Image src={food} alt='Dan Abramov' borderRadius="18px" size="sm"
 						boxSize='450px'

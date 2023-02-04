@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 
 function BookingForm(props) {
-	const [isLoading, setIsLoading] = useState(false) //response, 
+	const [isLoading, setIsLoading] = useState(false) //response,
 	const navigate = useNavigate('/')
 
 	const reserveTable = (values)=>{
@@ -111,7 +111,7 @@ function BookingForm(props) {
 							</Select>
 							<FormErrorMessage>{formik.errors.occasion}</FormErrorMessage>
 						</FormControl>
-						<Button type="submit" colorScheme="yellow" width="full" isLoading={isLoading}>
+						<Button type="submit" colorScheme="yellow" width="full" isLoading={isLoading} isDisabled={Object.keys(formik.errors).length}>
                 			{isLoading ? <Spinner/> : 'Submit' }
 						</Button>
 						</VStack>
