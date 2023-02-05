@@ -48,7 +48,7 @@ function BookingForm(props) {
 				Reserve a table
 				</Heading>
 				<Box p={6} rounded="md" w="100%">
-					<form onSubmit={formik.handleSubmit}>
+					<form data-testid="formik" onSubmit={formik.handleSubmit}>
 						<VStack spacing={4}>
 						<FormControl isInvalid={formik.touched.date && formik.errors.date}>
 							<FormLabel fontWeight="bold" htmlFor="date">Date</FormLabel>

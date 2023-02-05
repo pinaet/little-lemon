@@ -12,7 +12,6 @@ function CallToAction(props) {
 	const navigate = useNavigate()
 
 	useEffect(()=>{
-		console.log(flag)
 		if(flag){
 			console.log('tst')
 			navigate('/booking')
