@@ -12,10 +12,12 @@ function HomePage() {
 	return (
 		<>
 			<Nav />
-			<CallToAction setWord={setWord} word={word} />
-			<Specials />
-			<CustomersSay />
-			<Chicago />
+			<main>
+				<CallToAction setWord={setWord} word={word} />
+				<Specials />
+				<CustomersSay />
+				<Chicago />
+			</main>
 			<Footer />
 			{/* <Text color="secondary" bg="gray.400" fontFamily="heading" fontSize="9xl">{word}</Text> */}
 		</>
