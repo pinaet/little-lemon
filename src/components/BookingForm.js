@@ -56,6 +56,7 @@ function BookingForm(props) {
 							id="date"
 							name="date"
 							type="date"
+							aria-label="date"
 							onBlur={formik.handleBlur}
 							value={formik.values.date}
 							onChange={(e) => {
@@ -73,6 +74,7 @@ function BookingForm(props) {
 							<Select
 								id="time"
 								name="time"
+								aria-label="time"
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								value={formik.values.time}
@@ -94,6 +96,7 @@ function BookingForm(props) {
 							id="guests"
 							name="guests"
 							type="number"
+							aria-label="guests"
 							{...formik.getFieldProps('guests')}
 							/>
 							<FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
@@ -103,6 +106,7 @@ function BookingForm(props) {
 							<Select
 							id="occasion"
 							name="occasion"
+							aria-label="occasion"
 							{...formik.getFieldProps('occasion')}
 							>
 								<option style={{color:"purple"}} value="">Select Occasion</option>

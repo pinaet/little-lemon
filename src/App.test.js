@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CallToAction from './components/CallToAction';
 import { BrowserRouter as Router} from 'react-router-dom';
 import BookingPage from './components/BookingPage';
@@ -78,10 +78,11 @@ test('btn should be disabled for empty date', async ()=>{
 	fireEvent.change(guestsInput	, {	target: {value: 0 } });
 	fireEvent.change(occassionInput , {	target: {value: ""} });
     fireEvent.submit(form);
-    await new Promise(resolve => setTimeout(resolve, 300));
 
-	expect( btn ).toHaveAttribute('disabled')
-	screen.debug( btn )
+    await waitFor(() => {
+	    expect( btn ).toHaveAttribute('disabled')
+    })
+	// screen.debug( btn )
 })
 
 test('btn should not be disabled for none errors', async ()=>{
@@ -100,9 +101,9 @@ test('btn should not be disabled for none errors', async ()=>{
 	fireEvent.change(guestsInput	, {	target: {value: 2 } });
 	fireEvent.change(occassionInput , {	target: {value: "anniversary"} });
 
-    await new Promise(resolve => setTimeout(resolve, 300));
-
 	const btn				= screen.getByRole('button', {type:'submit'})
-	expect( btn ).not.toHaveAttribute('disabled')
-	screen.debug( btn )
+    await waitFor(() => {
+        expect( btn ).not.toHaveAttribute('disabled')
+    })
+	// screen.debug( btn )
 })
