@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitForElement } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import CallToAction from './components/CallToAction';
 import { BrowserRouter as Router} from 'react-router-dom';
 import BookingPage from './components/BookingPage';
@@ -42,15 +42,15 @@ test('validate inputs', () => {
 })
 
 test('reders form properly', ()=>{
-	const {getByLabelText} = render(
+	render(
 		<Router>
 			<BookingPage />
 		</Router>
 	)
-	const dateInput 		= getByLabelText(/Date/i)
-	const timeInput 		= getByLabelText(/Time/i)
-	const guestsInput 		= getByLabelText(/Guests/i)
-	const occassionInput 	= getByLabelText(/Occasion/i)
+	const dateInput 		= screen.getByLabelText(/Date/i)
+	const timeInput 		= screen.getByLabelText(/Time/i)
+	const guestsInput 		= screen.getByLabelText(/Guests/i)
+	const occassionInput 	= screen.getByLabelText(/Occasion/i)
 
 	expect( dateInput		).toBeInTheDocument()
 	expect( dateInput		).toHaveAttribute( 'type', 'date' )
@@ -61,65 +61,48 @@ test('reders form properly', ()=>{
 })
 
 test('btn should be disabled for empty date', async ()=>{
-	const {getByLabelText, getByRole, debug, getByText, getByTestId} = render(
+	render(
 		<Router>
 			<BookingPage />
 		</Router>
 	)
-	const dateInput 		= getByLabelText(/Date/i)
-	const timeInput 		= getByLabelText(/Time/i)
-	const guestsInput 		= getByLabelText(/Guests/i)
-	const occassionInput 	= getByLabelText(/Occasion/i)
-    const form              = getByTestId("formik")
+	const dateInput 		= screen.getByLabelText(/Date/i)
+	const timeInput 		= screen.getByLabelText(/Time/i)
+	const guestsInput 		= screen.getByLabelText(/Guests/i)
+	const occassionInput 	= screen.getByLabelText(/Occasion/i)
+    const form              = screen.getByTestId("formik")
 
+	const btn				= screen.getByRole('button', {type:'submit'})
 	fireEvent.change(dateInput      , {	target: {value: ""} });
 	fireEvent.change(timeInput      , {	target: {value: ""} });
 	fireEvent.change(guestsInput	, {	target: {value: 0 } });
 	fireEvent.change(occassionInput , {	target: {value: ""} });
     fireEvent.submit(form);
     await new Promise(resolve => setTimeout(resolve, 300));
-    
-	const btn				= getByRole('button', {type:'submit'})
-    // (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-    const errorText         = await screen.findAllByText(/Required/i);//getByText("")
-    // expect(errorText).toBeInTheDocument();
-	expect( btn ).toBeInTheDocument()
-	debug( btn )
+
+	expect( btn ).toHaveAttribute('disabled')
+	screen.debug( btn )
 })
 
 test('btn should not be disabled for none errors', async ()=>{
-	const {getByLabelText, getByRole} = render(
+	render(
 		<Router>
 			<BookingPage />
 		</Router>
 	)
-	const dateInput 		= getByLabelText(/Date/i)
-	const timeInput 		= getByLabelText(/Time/i)
-	const guestsInput 		= getByLabelText(/Guests/i)
-	const occassionInput 	= getByLabelText(/Occasion/i)
+	const dateInput 		= screen.getByLabelText(/Date/i)
+	const timeInput 		= screen.getByLabelText(/Time/i)
+	const guestsInput 		= screen.getByLabelText(/Guests/i)
+	const occassionInput 	= screen.getByLabelText(/Occasion/i)
 
-	fireEvent.change(dateInput      , {	target: {value: "2023-02-01"} });
+	fireEvent.change(dateInput      , {	target: {value: '2023-02-05'} });
 	fireEvent.change(timeInput      , {	target: {value: "17:00"} });
 	fireEvent.change(guestsInput	, {	target: {value: 2 } });
-	fireEvent.change(occassionInput , {	target: {value: "aniversary"} });
+	fireEvent.change(occassionInput , {	target: {value: "anniversary"} });
 
     await new Promise(resolve => setTimeout(resolve, 300));
-    
-	const btn				= getByRole('button', {type:'submit'})
-	expect( btn ).toHaveAttribute('disabled','')
+
+	const btn				= screen.getByRole('button', {type:'submit'})
+	expect( btn ).not.toHaveAttribute('disabled')
+	screen.debug( btn )
 })
-
-// it('validate user inputs, and provides error messages', async () => {
-// 	render(
-// 		<Router>
-// 			<BookingPage />
-// 		</Router>
-// 	)
-//     // fireEvent.change(screen.getByLabelText(/Guests/i), {
-//     //     target: {value: ""},
-//     // });
-
-//     fireEvent.submit(screen.getByTestId("formik"));
-
-//     expect(screen.getByText(/Date/)).toBeInTheDocument();
-// })
