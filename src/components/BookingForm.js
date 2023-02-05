@@ -97,6 +97,7 @@ function BookingForm(props) {
 							name="guests"
 							type="number"
 							aria-label="guests"
+							placeholder="Number of guests"
 							{...formik.getFieldProps('guests')}
 							/>
 							<FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
