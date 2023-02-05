@@ -38,7 +38,7 @@ function CustomersSay() {
 			<Flex
 				direction={"column"}
 				minH={10}
-				w="1120px"
+				w={{sm:'470px',md:'768px',lg:'1120px'}}
 				marginLeft="auto"
 				marginRight="auto"
 				bg="primary"

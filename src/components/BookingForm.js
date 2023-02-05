@@ -42,10 +42,10 @@ function BookingForm(props) {
 	})
 
 	return (
-		<Flex marginX="auto" w="1000px">
-			<VStack w="1024px" px={32} paddingBottom={32} alignItems="flex-start">
-				<Heading as="h1" id="contactme-section" paddingTop={20}>
-				Reserve a table
+		<Flex marginX="auto" w={{sm:'470px',md:'768px',lg:'1000px'}}>
+			<VStack w={{sm:'470px',md:'768px',lg:'1024px'}} px={{sm:'5',lg:'32'}} paddingBottom={32} alignItems="flex-start" >
+				<Heading as="h1" id="contactme-section" paddingTop={20} w={"100%"}>
+					Reserve a table
 				</Heading>
 				<Box p={6} rounded="md" w="100%">
 					<form data-testid="formik" onSubmit={formik.handleSubmit}>

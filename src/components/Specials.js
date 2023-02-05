@@ -26,28 +26,32 @@ const menus = [
 function Specials() {
 	return (
 		<Flex
-			w="1120px"
+			w={{sm:'470px',md:'768px',lg:'1120px'}}
 			direction={"column"}
 			marginLeft="auto"
 			marginRight="auto"
 			paddingBottom={10}
 			>
 			<Flex
-				h="20"
+				direction={{sm:'column',lg:'row'}}
+				h={{sm:'300px',lg:'20'}}
 				w="100%"
 				alignItems="center"
 				justifyContent="space-between"
 				padding={10}
-				paddingTop="100px">
+				paddingTop="100px"
+				>
 				<Text fontFamily="heading" fontSize="6xl">Specials</Text>
 				<LLButton msg="Online Menu" />
 			</Flex>
 			<Flex
+				direction={{sm:'column',lg:'row'}}
 				h="fit-content"
 				w="100%"
 				alignItems="center"
 				justifyContent="space-between"
-				marginTop={10}
+				marginTop={{sm:'3',lg:'10'}}
+				gap={{sm:'10',lg:'0'}}
 				padding={1}>
 				{
 					menus.map((menu) => (

@@ -24,8 +24,9 @@ function CallToAction(props) {
 				bg="#495E57"
 			>
 				<Flex
+					direction={{sm:'column',lg:'row'}}
 					minH={10}
-					w="1120px"
+					w={{sm:'470px',md:'768px',lg:'1120px'}}
 					marginLeft="auto"
 					marginRight="auto"
 					bg="#495E57"
@@ -35,11 +36,11 @@ function CallToAction(props) {
 				>
 					<Flex w={450} direction={'column'} gap="50px">
 						<Flex direction={'column'}>
-							<Text fontFamily={"Markazi Text"} fontSize="64px" color={"#F4CE14"}>Little Lemon</Text>
+							<Text fontFamily={"Markazi Text"} fontSize="64px" color={"#F4CE14"} marginBottom={{sm:-5,md:0}}>Little Lemon</Text>
 							<Text fontFamily={"Markazi Text"} fontSize="40px" color={"white"}>Chicago</Text>
 							<Text fontFamily={"Karla"} fontSize="18px" color={"white"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
 						</Flex>
-						<Button colorScheme='yellow' size='lg' w={'fit-content'} rounded="18px" fontFamily={"Karla"} fontSize="18px" onClick={()=>setFlag(true)}>
+						<Button marginBottom={{sm:5,md:0}} colorScheme='yellow' size='lg' w={'fit-content'} rounded="18px" fontFamily={"Karla"} fontSize="18px" onClick={()=>setFlag(true)}>
 							Reserve a Table
 						</Button>
 					</Flex>
