@@ -117,7 +117,7 @@ function BookingForm(props) {
 						</FormControl>
 						<Spacer />
 						<Button type="submit" colorScheme="yellow" width="full" isLoading={isLoading} isDisabled={Object.keys(formik.errors).length || !formik.values.date}>
-                			{isLoading ? <Spinner/> : 'Submit' }
+                			{isLoading ? <Spinner/> : 'Reserve' }
 						</Button>
 						</VStack>
 					</form>
