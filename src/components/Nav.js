@@ -9,23 +9,28 @@ function Nav() {
 	return (
 		<nav>
             <Flex
-                w="1120px"
-                    marginLeft="auto"
-                    marginRight="auto">
+                direction={{sm:'column',lg:'row'}}
+                w={{sm:'470px',md:'768px',lg:'1120px'}}
+                marginLeft="auto"
+                marginRight="auto">
                 <Flex
                     h="20"
-                    alignItems="center">
+                    alignItems="center"
+                    justifyContent={{sm:'center',md:''}}
+                    marginBottom={{sm:'3',md:'0'}}
+                    >
                     <Logo />
                 </Flex>
                 <Spacer />
                 <Flex
                     alignItems="center"
                     justifyContent="space-between"
-                    gap="10"
+                    gap={{sm:'3',md:'10'}}
                     fontWeight="extrabold"
                     fontFamily={"Karla"}
                     textTransform="uppercase"
                     // className="uppercase"
+                    fontSize={{sm:'10px',lg:'1em'}}
                 >
                     <Link as={ReachLink} to="/">Home</Link>
                     <Link>About</Link>

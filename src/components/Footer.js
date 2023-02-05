@@ -76,16 +76,17 @@ function Footer() {
 				paddingY={20}
 			>
 				<Flex
+					direction={{sm:'column',md:'row'}}
 					minH={10}
 					w="1120px"
 					marginLeft="auto"
 					marginRight="auto"
-					gap={20}
+					gap={{sm:10,md:20}}
 					paddingLeft={10}
 					justifyContent='space-between'
 				>
 					<Image src={Logo} w='10%' />
-					<Flex gap={32}>
+					<Flex gap={{sm:10,md:32}}>
 						{
 							navigations.map((navigation) => (
 								<LinkList
