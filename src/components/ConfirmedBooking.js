@@ -6,14 +6,16 @@ import Nav from "./Nav";
 function ConfirmedBooking() {
 
 	return (
-		<main>
-			<Nav/>
-			<Flex w="full" h="350" alignItems={"center"} justifyContent="center" direction={"column"}>
-				<GiConfirmed size={72} color="green" />
-				<Text fontSize={48} fontFamily="heading">Booking Confirmed</Text>
-			</Flex>
+		<>
+			<main>
+				<Nav/>
+				<Flex w="full" h="550" alignItems={"center"} justifyContent="center" direction={"column"}>
+					<GiConfirmed size={72} color="green" />
+					<Text fontSize={48} fontFamily="heading">Booking Confirmed</Text>
+				</Flex>
+			</main>
 			<Footer/>
-		</main>
+		</>
 	);
 }
 

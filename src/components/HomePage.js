@@ -17,7 +17,7 @@ function HomePage() {
 			<CustomersSay />
 			<Chicago />
 			<Footer />
-			{/* <Text color="primary.100" bg="gray.400" fontFamily="heading" fontSize="9xl">{word}</Text> */}
+			{/* <Text color="secondary" bg="gray.400" fontFamily="heading" fontSize="9xl">{word}</Text> */}
 		</>
 	)
 }

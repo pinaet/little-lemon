@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, Select, Spinner, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, Select, Spacer, Spinner, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 function BookingForm(props) {
 	const [isLoading, setIsLoading] = useState(false) //response,
-	const navigate = useNavigate('/')
+	const navigate = useNavigate()
 
 	const reserveTable = (values)=>{
 		setIsLoading(true)
-		console.log(values, isLoading)
+		// console.log(values, isLoading)
 
 		setTimeout(function() {
-			//your code to be executed after 1 second
+			//code to be executed after 2 second
 			let result = props.submitForm(values)
 			if( result ){
 				setIsLoading(false)
@@ -101,7 +101,7 @@ function BookingForm(props) {
 							/>
 							<FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
 						</FormControl>
-						<FormControl isInvalid={formik.touched.occasion && formik.errors.occasion}>
+						<FormControl isInvalid={formik.touched.occasion && formik.errors.occasion} marginBottom={20}>
 							<FormLabel fontWeight="bold" htmlFor="occasion">Occasion</FormLabel>
 							<Select
 							id="occasion"
@@ -115,7 +115,8 @@ function BookingForm(props) {
 							</Select>
 							<FormErrorMessage>{formik.errors.occasion}</FormErrorMessage>
 						</FormControl>
-						<Button type="submit" colorScheme="yellow" width="full" isLoading={isLoading} isDisabled={Object.keys(formik.errors).length}>
+						<Spacer />
+						<Button type="submit" colorScheme="yellow" width="full" isLoading={isLoading} isDisabled={Object.keys(formik.errors).length || !formik.values.date}>
                 			{isLoading ? <Spinner/> : 'Submit' }
 						</Button>
 						</VStack>
